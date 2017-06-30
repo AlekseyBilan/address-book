@@ -8,7 +8,7 @@ html {
 }
 
 body {
-    background: #F2F8F8;
+    background:#F2F8F8;
     font-family: 'Raleway', 'Montserrat', 'sans-serif';
 }
 
@@ -30,7 +30,6 @@ body {
 .title {
     overflow: hidden;
 }
-
 .title:before,
 .title:after {
     content: '';
@@ -42,11 +41,9 @@ body {
     background: #E3EDEB;
     margin-left: 30px;
 }
-
 .title:before {
     margin-left: -100%;
 }
-
 .title:after {
     margin-right: -100%;
 }
@@ -69,7 +66,6 @@ a {
     margin: 12px 0;
     font-weight: bold;
 }
-
 .data-text-wrap {
     background: #D9EEEF;
     border: 1px solid #C2E4E6;
@@ -96,7 +92,6 @@ a {
 .form-horizontal .form-group {
     margin-right: 10px;
 }
-
 .personal-info .btn-link {
     float: right;
     padding: 0;

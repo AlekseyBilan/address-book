@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign in</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/login.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+</head>
+<body>
+<section>
+    <div class="col-sm-12 col-xs-12">
+        <ul class="header nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#sign-in" aria-controls="sign-in" role="tab" data-toggle="tab">Sign In</a></li>
+            <li role="presentation"><a href="#registration" aria-controls="registration" role="tab" data-toggle="tab">Create an Account</a></li>
+        </ul>
+    </div>
+</section>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="sign-in">
+                    <form class="form-horizontal form-signin">
+                        <div class="row">
+                            <div class="col-sm-6 col-xs-12">
+                                <div class="form-group email">
+                                    <label for="email">Email</label>
+                                    <input class="form-control" name="email">
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-xs-12">
+                                <div class="form-group password">
+                                    <label for="password">Password</label>
+                                    <input class="form-control" name="password">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-12">
+                                <label class="remember-me">
+                                    <input type="checkbox" value="remember-me">
+                                    <div class="check"><div class="active"></div></div>
+                                    <span>Remember me</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-3 col-xs-6">
+                                <button class="btn btn-large btn-default btn-cancel">Cancel</button>
+                            </div>
+                            <div class="col-sm-3 col-xs-6">
+                                <button class="btn btn-large btn-default btn-signin" type="submit">Sign in</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="separator">
+                        <span>OR</span>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 col-sm-offset-4 col-xs-12">
+                            <button class="btn btn-large btn-default btn-fb" type="submit">Login using facebook</button>
+                        </div>
+                    </div>
+                    <div class="row remember-pass">
+                        <span class="text">Forgot Your  Password?</span>
+                        <a href="#">Click Here</a>
+                    </div>
+                    <div class="row create-account">
+                        <span class="text">Don't have an account?</span>
+                        <a href="#">Create an Account</a>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="registration"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,237 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: #225A59;
+}
+
+body {
+    font-family: 'Raleway', 'Montserrat', 'sans-serif';
+    background:#F2F8F8;
+}
+
+.header {
+    text-align: center;
+    margin-top: 30px;
+    border-bottom: 1px solid #D9E5E3;
+}
+
+.header > li {
+    display: inline-block;
+    float: none;
+    margin: 0 30px;
+}
+
+.header > li.active > a, .header > li.active > a:focus, .header > li.active > a:hover {
+    border-width: 0 0 2px 0;
+    border-style: solid;
+    border-color: #5096D1;
+    padding: 10px 2px;
+    color: #61A9DA;
+    background: transparent;
+}
+
+.header > li > a, .header > li > a:hover {
+    border: none;
+    background: none;
+    padding: 10px 2px;
+    color: #225A59;
+    font-weight: bold;
+    font-size: 19px;
+}
+
+.container {
+    clear: both;
+}
+
+.separator {
+    overflow: hidden;
+    text-align: center;
+}
+
+.separator > span {
+    position: relative;
+    display: inline-block;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.separator > span:before, .separator > span:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    border-bottom: 1px solid #D9E5E3;
+    width: 1000px;
+    margin: 0 15px;
+}
+
+.separator > span:before {
+    right: 100%;
+}
+
+.separator > span:after {
+    left: 100%;
+}
+
+.form-group.email, .form-group.password {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.form-group.email, .form-group.password {
+    margin-bottom: 30px;
+}
+
+label.remember-me {
+    margin: 0 5px 0 0;
+}
+
+.btn-cancel, .btn-signin {
+    background: #3E7771;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 13px;
+    border: none;
+    width: 100%;
+}
+
+.btn-cancel {
+    background: #3E7771;
+}
+
+.btn-signin {
+    background: #88C462;
+}
+
+.form-signin {
+    margin: 70px 0 70px 0;
+    font-size: 17px;
+}
+
+.form-signin input {
+    padding: 22px;
+    border: 1px solid #2E5856;
+    box-shadow: none;
+}
+
+label.remember-me {
+    position: relative;
+    margin-top: 16px;
+}
+
+label.remember-me > span {
+    margin-left: 30px;
+}
+
+label.remember-me > input {
+    display: none;
+}
+
+label.remember-me > .check {
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border: 1px solid #2E5856;
+    border-radius: 5px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+label.remember-me > .check > .active {
+    height: 16px;
+    width: 16px;
+    background: #2E5856;
+    margin-left: 1px;
+    margin-top: 1px;
+    border-radius: 4px;
+    display: none;
+}
+
+label.remember-me > input:checked + .check > .active {
+    display: block;
+}
+
+.remember-pass, .create-account {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.btn-fb {
+    margin: 60px auto 50px;
+    float: none !important;
+    padding: 13px;
+    border: none;
+    background: #2461B4;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 15px;
+    width: 100%;
+}
+
+.btn-fb::before {
+    content: 'f';
+    text-transform: lowercase;
+    font-size: 18px;
+    margin-right: 15px;
+    line-height: 15px;
+}
+
+.remember-pass .text, .create-account .text {
+    font-size: 19px;
+}
+
+.remember-pass a, .create-account a {
+    color: #63AADB;
+    text-decoration: underline;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+@media (min-width: 768px) {
+    .btn-cancel {
+        margin-right: -4px;
+        float: right;
+    }
+
+    .btn-signin {
+        margin-left: -4px;
+    }
+}
+
+@media (max-width: 767px) {
+    .header {
+        text-align: left;
+    }
+
+    .header > li {
+        margin: 0;
+    }
+
+    .header > li:nth-child(1) {
+        float: left;
+    }
+
+    .header > li:nth-child(2) {
+        float: right;
+    }
+
+    label.remember-me {
+        margin-top: 2px;
+        margin-bottom: 30px;
+    }
+
+    .form-signin {
+        margin: 40px 0 30px 0;
+    }
+
+    .btn-fb {
+        margin: 25px auto 25px;
+    }
+
+    .remember-pass .text, .create-account .text, .remember-pass a, .create-account a {
+        font-size: 16px;
+    }
+}
