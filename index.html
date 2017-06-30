@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html ng-app="profileApp">
+<head>
+    <title>Profile App</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css"/>
+    <link href="app.css" rel="stylesheet" type="text/css"/>
+
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="app.js"></script>
+    <script src="app-controller.js"></script>
+</head>
+
+<body ng-controller="profileAppCtrl">
+<div class="container">
+    <div id="form-wrap">
+        <form class="form-horizontal ng-valid personal-info">
+            <div class="title title--center">Personal Info</div>
+            <div class="row" style="margin: 0">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="styled-text">Name</label>
+                        <a href="#" class="btn btn-link" ng-click="EditName = !EditName"><i class="fa fa-pencil"
+                                                                                            aria-hidden="true"></i>EDIT</a>
+                        <div class="data-text-wrap">
+                            <span ng-model="currentUser.name" ng-hide="EditName" class="editable-text">{{currentUser.name}}</span>
+                            <input class="form-control ng-valid" name="mobile" ng-model="currentUser.name"
+                                   placeholder="Name" ng-show="EditName" ng-blur="EditName = false">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="styled-text">Email</label>
+                        <a href="#" class="btn btn-link" ng-click="EditEmail = !EditEmail"><i class="fa fa-pencil"
+                                                                                              aria-hidden="true"></i>EDIT</a>
+                        <div class="data-text-wrap">
+                            <span ng-hide="EditEmail" class="editable-text">{{currentUser.email}}</span>
+                            <input class="form-control ng-valid" ng-model="currentUser.email" placeholder="Email"
+                                   ng-show="EditEmail" ng-blur="EditEmail = false">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <form class="form-horizontal ng-valid address-book">
+            <div class="title title--center">Address Book</div>
+            <div class="control-group">
+                <div class="row" style="margin: 0">
+                    <div class="col-sm-6 address-item" ng-repeat="address in currentUser.addresses">
+                        <div class="row">
+                            <div class="col-sm-7">
+                                <label class="editable-text styled-text"
+                                       ng-show="!editMode">{{address.nickname}}</label>
+                                <input class="form-control ng-valid" ng-model="newAddress.nickname"
+                                       placeholder="Address nickname" ng-show="editMode">
+                            </div>
+                            <div class="col-sm-5">
+                                <a href="#" class="btn btn-link" ng-click="editMode = !editMode">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>EDIT</a>
+                                <a href="#" class="btn btn-link remove-address"
+                                   ng-click="remove('address', address.id)">
+                                    <i class="fa fa-times" aria-hidden="true"></i>REMOVE</a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="data-text-wrap">
+                                <span class="editable-text"
+                                      ng-show="!editMode">{{address.postcode}} {{address.street}}</span>
+                                <span class="editable-text"
+                                      ng-show="!editMode">{{address.city}}, {{address.state}}</span>
+
+                                <input class="form-control ng-valid" ng-model="newAddress.postcode"
+                                       placeholder="post code"
+                                       ng-show="editMode">
+                                <input class="form-control ng-valid" ng-model="newAddress.street" placeholder="street"
+                                       ng-show="editMode">
+                                <input class="form-control ng-valid" ng-model="newAddress.city" placeholder="city"
+                                       ng-show="editMode">
+                                <input class="form-control ng-valid" ng-model="newAddress.state" placeholder="state"
+                                       ng-show="editMode">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" ng-hide="AddNewAddresMode"
+                        ng-click="AddNewAddresMode = !AddNewAddresMode;">ADD NEW ADDRESS
+                </button>
+
+                <div class="col-sm-6" ng-show="AddNewAddresMode">
+                    <label class="" for="mobile">Address nickname</label>
+                    <input class="form-control ng-valid" ng-model="newAddress.nickname" placeholder="Address nickname">
+                    <label class="" for="mobile">Address</label>
+                    <input class="form-control ng-valid" ng-model="newAddress.postcode" placeholder="post code">
+                    <input class="form-control ng-valid" ng-model="newAddress.street" placeholder="street">
+                    <input class="form-control ng-valid" ng-model="newAddress.city" placeholder="city">
+                    <input class="form-control ng-valid" ng-model="newAddress.state" placeholder="state">
+                    <button class="btn btn-primary" ng-click="AddNewAddresMode = false; clear(newAddress);">Cancel
+                    </button>
+                    <button class="btn btn-primary" ng-click="addNewAddress(newAddress); AddNewAddresMode = false">
+                        SAVE
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <form class="form-horizontal ng-pristine ng-valid contact-info">
+            <div class="title title--center">Contact Info</div>
+            <div class="row" style="margin: 0">
+                <div class="col-sm-6" ng-repeat="phone in currentUser.phones">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-7">
+                                <span class="editable-text styled-text" ng-show="!editMode">{{phone.nickname}}</span>
+                                <input class="form-control ng-valid" ng-show="editMode" ng-model="phone.nickname"
+                                       placeholder="Name">
+                            </div>
+                            <div class="col-sm-5">
+                                <a href="#" class="btn btn-link" ng-click="editMode = !editMode"><i class="fa fa-pencil"
+                                                                                                    aria-hidden="true"></i>EDIT</a>
+                                <a href="#" class="btn btn-link" ng-click="remove('phone', phone.id)"><i
+                                        class="fa fa-times" aria-hidden="true"></i>REMOVE</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="data-text-wrap">
+                            <span class="editable-text" ng-show="!editMode">{{phone.phone}}</span>
+                            <input class="form-control ng-valid" ng-model="phone.phone" placeholder="state"
+                                   ng-show="editMode">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary" ng-hide="AddNewContactMode"
+                    ng-click="AddNewContactMode = !AddNewContactMode">ADD NEW CONTACT
+            </button>
+
+            <div class="col-sm-6" ng-show="AddNewContactMode">
+                <label class="" for="mobile">Contact nickname</label>
+                <input class="form-control ng-valid" ng-model="newContact.nickname" placeholder="Contact nickname">
+                <label class="" for="mobile">Contact</label>
+                <input class="form-control ng-valid" ng-model="newContact.phone" placeholder="Contact">
+                <button class="btn btn-primary" ng-click="AddNewContactMode = false">Cancel</button>
+                <button class="btn btn-primary" ng-click="addNewContact(newContact); AddNewContactMode = false">SAVE
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
